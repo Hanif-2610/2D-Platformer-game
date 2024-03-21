@@ -10,12 +10,22 @@ public class Player : MonoBehaviour
     [Header("Move Info")]
     public float moveSpeed;
     public float jumpForce;
+    public float doubleJumpForce;
     public Vector2 wallJumpDirection;
+
+    float defaultJumpForce;
 
     private bool canDoubleJump = true;
     private bool canMove;
 
     private float movingInput;
+
+    [SerializeField] float bufferJumpTime;
+    float bufferJumpCounter;
+
+    [SerializeField] float cayoteJumpTime;
+    float cayoteJumpCounter;
+    bool canHaveCayoteJump;
 
     [Header("Collision Info")]
     public LayerMask whatIsGround;
@@ -34,6 +44,8 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+
+        defaultJumpForce = jumpForce;
     }
 
     void Update()
@@ -43,11 +55,28 @@ public class Player : MonoBehaviour
         CollisionChecks();
         InputChecks();
         
+        bufferJumpCounter -= Time.deltaTime;
+        cayoteJumpCounter -= Time.deltaTime;
 
         if (isGrounded)
         {
             canDoubleJump = true;
             canMove = true;
+
+            if(bufferJumpCounter > 0)
+            {
+                bufferJumpCounter = -1;
+                Jump();
+            }
+            canHaveCayoteJump = true;
+        }
+        else
+        {
+            if(canHaveCayoteJump)
+            {
+                canHaveCayoteJump = false;
+                cayoteJumpCounter = cayoteJumpTime;
+            }
         }
 
         if(canWallSlide)
@@ -83,18 +112,25 @@ public class Player : MonoBehaviour
 
     private void JumpButton()
     {
+        if(!isGrounded)
+            bufferJumpCounter = bufferJumpTime;
+
         if(isWallSliding)
         {
             WallJump();
+            canDoubleJump = true;
         }
-        else if (isGrounded)
+        else if (isGrounded || cayoteJumpCounter > 0)
         {
             Jump();
         }
         else if(canDoubleJump)
         {
+            canMove = true;
             canDoubleJump = false;
+            jumpForce = doubleJumpForce;
             Jump();
+            jumpForce = defaultJumpForce;
         }
 
         canWallSlide = false;
