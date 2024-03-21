@@ -27,6 +27,13 @@ public class Player : MonoBehaviour
     float cayoteJumpCounter;
     bool canHaveCayoteJump;
 
+    [Header("Knockback info")]
+    [SerializeField] Vector2 knockbackDirection;
+    [SerializeField] float knockbackTime;
+    [SerializeField] float knockbackProtectionTime;
+    bool isKnocked;
+    bool canBeKnocked = true;
+
     [Header("Collision Info")]
     public LayerMask whatIsGround;
     public float groundCheckDistance;
@@ -51,6 +58,10 @@ public class Player : MonoBehaviour
     void Update()
     {
         AnimationControllers();
+
+        if(isKnocked)
+            return;
+
         FlipController();
         CollisionChecks();
         InputChecks();
@@ -92,6 +103,7 @@ public class Player : MonoBehaviour
     {
         bool isMoving = rb.velocity.x != 0;
 
+        anim.SetBool("isKnocked", isKnocked);
         anim.SetBool("isMoving", isMoving);
         anim.SetBool("isGrounded", isGrounded);
         anim.SetBool("isWallSliding", isWallSliding);
@@ -134,6 +146,29 @@ public class Player : MonoBehaviour
         }
 
         canWallSlide = false;
+    }
+
+    public void Knockback(int direction)
+    {
+        if(!canBeKnocked)
+            return;
+
+        isKnocked = true;
+        canBeKnocked = false;
+
+        rb.velocity = new Vector2(knockbackDirection.x * direction, knockbackDirection.y);
+        Invoke("CancelKnockback", knockbackTime);
+        Invoke("AllowKnockback", knockbackProtectionTime);
+    }
+
+    private void CancelKnockback()
+    {
+        isKnocked = false;
+    }
+
+    private void AllowKnockback()
+    {
+        canBeKnocked = true;
     }
 
     private void Move()
