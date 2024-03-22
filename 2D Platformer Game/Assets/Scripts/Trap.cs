@@ -10,14 +10,7 @@ public class Trap : MonoBehaviour
         {
             Player player = collision.GetComponent<Player>();
 
-            if(player.transform.position.x > transform.position.x)
-            {
-                player.Knockback(1);
-            }
-            else if(player.transform.position.x < transform.position.x)
-                player.Knockback(-1);
-            else
-                player.Knockback(0);
+            player.Knockback(transform);
         }
     }
 }

@@ -35,9 +35,11 @@ public class Player : MonoBehaviour
     bool canBeKnocked = true;
 
     [Header("Collision Info")]
-    public LayerMask whatIsGround;
-    public float groundCheckDistance;
-    public float wallCheckDistance;
+    [SerializeField] LayerMask whatIsGround;
+    [SerializeField] float groundCheckDistance;
+    [SerializeField] float wallCheckDistance;
+    [SerializeField] Transform enemyCheck;
+    [SerializeField] float enemyCheckRadius;
     private bool isGrounded;
     private bool isWallDetected;
     private bool canWallSlide;
@@ -59,13 +61,14 @@ public class Player : MonoBehaviour
     {
         AnimationControllers();
 
-        if(isKnocked)
+        if (isKnocked)
             return;
 
         FlipController();
         CollisionChecks();
         InputChecks();
-        
+        CheckForEnemy();
+
         bufferJumpCounter -= Time.deltaTime;
         cayoteJumpCounter -= Time.deltaTime;
 
@@ -74,7 +77,7 @@ public class Player : MonoBehaviour
             canDoubleJump = true;
             canMove = true;
 
-            if(bufferJumpCounter > 0)
+            if (bufferJumpCounter > 0)
             {
                 bufferJumpCounter = -1;
                 Jump();
@@ -83,20 +86,37 @@ public class Player : MonoBehaviour
         }
         else
         {
-            if(canHaveCayoteJump)
+            if (canHaveCayoteJump)
             {
                 canHaveCayoteJump = false;
                 cayoteJumpCounter = cayoteJumpTime;
             }
         }
 
-        if(canWallSlide)
+        if (canWallSlide)
         {
             isWallSliding = true;
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.1f);
         }
-            
+
         Move();
+    }
+
+    private void CheckForEnemy()
+    {
+        Collider2D[] hitedColliders = Physics2D.OverlapCircleAll(enemyCheck.position, enemyCheckRadius);
+
+        foreach (var enemy in hitedColliders)
+        {
+            if (enemy.GetComponent<Enemy>() != null)
+            {
+                if(rb.velocity.y < 0)
+                {
+                    enemy.GetComponent<Enemy>().Damage();
+                    Jump();
+                }
+            }
+        }
     }
 
     private void AnimationControllers()
@@ -148,7 +168,7 @@ public class Player : MonoBehaviour
         canWallSlide = false;
     }
 
-    public void Knockback(int direction)
+    public void Knockback(Transform damageTransform)
     {
         if(!canBeKnocked)
             return;
@@ -156,7 +176,15 @@ public class Player : MonoBehaviour
         isKnocked = true;
         canBeKnocked = false;
 
-        rb.velocity = new Vector2(knockbackDirection.x * direction, knockbackDirection.y);
+        #region Define horizontal direction for knockback
+        int horizontalDirection = 0;
+        if(transform.position.x > damageTransform.position.x)
+            horizontalDirection = 1;
+        else if(transform.position.x < damageTransform.position.x)
+            horizontalDirection = -1;
+        #endregion
+
+        rb.velocity = new Vector2(knockbackDirection.x * horizontalDirection, knockbackDirection.y);
         Invoke("CancelKnockback", knockbackTime);
         Invoke("AllowKnockback", knockbackProtectionTime);
     }
@@ -226,5 +254,6 @@ public class Player : MonoBehaviour
     {
         Gizmos.DrawLine(transform.position, new Vector3(transform.position.x, transform.position.y - groundCheckDistance, transform.position.z));
         Gizmos.DrawLine(transform.position, new Vector3(transform.position.x + wallCheckDistance * facingDirection, transform.position.y));    
+        Gizmos.DrawWireSphere(enemyCheck.position, enemyCheckRadius);
     }
 }
