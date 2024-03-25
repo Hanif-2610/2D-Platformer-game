@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
     protected Animator anim;
     protected Rigidbody2D rb;
 
-    protected int facingDirection = 1;
+    protected int facingDirection = -1;
 
     [SerializeField] protected LayerMask whatIsGround;
     [SerializeField] protected float groundCheckDistance;
@@ -18,6 +18,8 @@ public class Enemy : MonoBehaviour
     protected bool wallDetected;
     protected bool groundDetected;
 
+    public bool invincible;
+
     protected virtual void Start() 
     {
         anim = GetComponent<Animator>();
@@ -26,15 +28,24 @@ public class Enemy : MonoBehaviour
 
     public void Damage()
     {
-        Debug.Log("I was damaged!");
+        if(!invincible)
+        {
+            anim.SetTrigger("gotHit");
+            Debug.Log("You Hit The Enemy");
+
+        }
+    }
+
+    public void DestroyMe()
+    {
         Destroy(gameObject);
     }
 
-    void OnCollisionEnter2D(Collision2D collision) 
+    void OnTriggerEnter2D(Collider2D collision) 
     {
-        if(collision.collider.GetComponent<Player>() != null)
+        if(collision.GetComponent<Player>() != null)
         {
-            Player player = collision.collider.GetComponent<Player>();
+            Player player = collision.GetComponent<Player>();
 
             player.Knockback(transform);
         }

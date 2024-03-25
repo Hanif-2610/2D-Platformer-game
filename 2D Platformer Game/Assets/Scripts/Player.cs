@@ -110,9 +110,15 @@ public class Player : MonoBehaviour
         {
             if (enemy.GetComponent<Enemy>() != null)
             {
+
+                Enemy newEnemy = enemy.GetComponent<Enemy>();
+
+                if(newEnemy.invincible)
+                    return;
+                
                 if(rb.velocity.y < 0)
                 {
-                    enemy.GetComponent<Enemy>().Damage();
+                    newEnemy.Damage();
                     Jump();
                 }
             }

@@ -12,14 +12,15 @@ public class Enemy_Mushroom : Enemy
     protected override void Start()
     {
         base.Start();
-        facingDirection = -1;
     }
 
     private void Update()
     {
         if(idleTimeCounter <=  0)
             rb.velocity = new Vector2(speed * facingDirection, rb.velocity.y);
-
+        else
+            rb.velocity = new Vector2(0, 0);
+        
         idleTimeCounter -= Time.deltaTime;
         
         CollisionChecks();
@@ -29,5 +30,7 @@ public class Enemy_Mushroom : Enemy
             idleTimeCounter = idleTime;
             Flip();
         }
+
+        anim.SetFloat("xVelocity", rb.velocity.x);
     }
 }
