@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     protected int facingDirection = -1;
 
     [SerializeField] protected LayerMask whatIsGround;
+    [SerializeField] protected LayerMask whatToIgnore;
     [SerializeField] protected float groundCheckDistance;
     [SerializeField] protected float wallCheckDistance;
     [SerializeField] protected Transform groundCheck;
@@ -20,10 +21,31 @@ public class Enemy : MonoBehaviour
 
     public bool invincible;
 
+    [Header("Move info")]
+    [SerializeField] protected float speed;
+    [SerializeField] protected float idleTime = 2;
+                     protected float idleTimeCounter;
+
     protected virtual void Start() 
     {
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+    }
+
+    protected virtual void WalkAround()
+    {
+        if(idleTimeCounter <=  0)
+            rb.velocity = new Vector2(speed * facingDirection, rb.velocity.y);
+        else
+            rb.velocity = new Vector2(0, 0);
+        
+        idleTimeCounter -= Time.deltaTime;
+
+        if(wallDetected || !groundDetected)
+        {
+            idleTimeCounter = idleTime;
+            Flip();
+        }
     }
 
     public void Damage()
