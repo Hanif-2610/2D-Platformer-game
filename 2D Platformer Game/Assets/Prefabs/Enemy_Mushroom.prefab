@@ -199,10 +199,14 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
+  whatToIgnore:
+    serializedVersion: 2
+    m_Bits: 257
   groundCheckDistance: 1.06
   wallCheckDistance: 0.85
   groundCheck: {fileID: 3322645376449420836}
   wallCheck: {fileID: 1281240195230822537}
+  invincible: 0
   speed: 2
   idleTime: 2
 --- !u!1 &3447712720555877500

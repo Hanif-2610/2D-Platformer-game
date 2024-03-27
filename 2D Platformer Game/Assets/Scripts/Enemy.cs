@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour
     protected bool wallDetected;
     protected bool groundDetected;
 
-    public bool invincible;
+    [HideInInspector] public bool invincible;
 
     [Header("Move info")]
     [SerializeField] protected float speed;
@@ -48,7 +48,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void Damage()
+    public virtual void Damage()
     {
         if(!invincible)
         {
