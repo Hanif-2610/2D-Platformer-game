@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy_Radish : Enemy
 {
     private RaycastHit2D groundBelowDetected;
-    private bool groundAboveDetected;
+    private RaycastHit2D groundAboveDetected;
 
     [Header("Radish Spesifics")]
     [SerializeField] private float ceilingDistance;
