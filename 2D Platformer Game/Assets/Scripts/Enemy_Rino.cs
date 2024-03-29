@@ -10,7 +10,6 @@ public class Enemy_Rino : Enemy
                      float shockTimeCounter;
     
     RaycastHit2D playerDetection;
-    bool aggresive;
 
     protected override void Start()
     {

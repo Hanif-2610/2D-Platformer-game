@@ -298,6 +298,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trap_Fire_Switcher
       objectReference: {fileID: 0}
+    - target: {fileID: 4938479354331942048, guid: a7328648cbae5864cb193dc12d0d8b74, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9220998150437393438, guid: a7328648cbae5864cb193dc12d0d8b74, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.15
@@ -14786,6 +14790,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trap_Saw_Patrol
       objectReference: {fileID: 0}
+    - target: {fileID: 7920070531997230972, guid: 893eedf9b0965354894b33d1b802535f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14802,6 +14810,10 @@ PrefabInstance:
     - target: {fileID: 3073987824051302041, guid: d1fa2582b8fb2924e908a5589aab6550, type: 3}
       propertyPath: m_Name
       value: Enemy_Radish
+      objectReference: {fileID: 0}
+    - target: {fileID: 3073987824051302041, guid: d1fa2582b8fb2924e908a5589aab6550, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4685701172671561239, guid: d1fa2582b8fb2924e908a5589aab6550, type: 3}
       propertyPath: m_LocalPosition.x
@@ -14860,6 +14872,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_BlueBird
       objectReference: {fileID: 0}
+    - target: {fileID: 2084086456190755803, guid: 1db6c57c20808a8439ab70d9c17cd67d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2843702700456247544, guid: 1db6c57c20808a8439ab70d9c17cd67d, type: 3}
+      propertyPath: movePoint
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2843702700456247544, guid: 1db6c57c20808a8439ab70d9c17cd67d, type: 3}
+      propertyPath: xMultiplier
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2843702700456247544, guid: 1db6c57c20808a8439ab70d9c17cd67d, type: 3}
+      propertyPath: yMultiplier
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5944122319801548996, guid: 1db6c57c20808a8439ab70d9c17cd67d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.72
@@ -14916,6 +14944,10 @@ PrefabInstance:
     - target: {fileID: 1622557118024352080, guid: 817603a9359c5024d885e243fb3c4970, type: 3}
       propertyPath: m_Name
       value: Enemy_Mushroom
+      objectReference: {fileID: 0}
+    - target: {fileID: 1622557118024352080, guid: 817603a9359c5024d885e243fb3c4970, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3947052752656698048, guid: 817603a9359c5024d885e243fb3c4970, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15035,6 +15067,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trap_Spiked_Ball
       objectReference: {fileID: 0}
+    - target: {fileID: 3443111793479549730, guid: 372a03da98a582b4eaf34e61c270ba9b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4287645938110963193, guid: 372a03da98a582b4eaf34e61c270ba9b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 14.96
@@ -15080,6 +15116,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 372a03da98a582b4eaf34e61c270ba9b, type: 3}
+--- !u!1001 &6176211187572451550
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1597187792959302556, guid: b54e9edd8c051c74f9dc606e77fa087a, type: 3}
+      propertyPath: m_Name
+      value: Enemy_Ghost
+      objectReference: {fileID: 0}
+    - target: {fileID: 4163194694925071930, guid: b54e9edd8c051c74f9dc606e77fa087a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 4163194694925071930, guid: b54e9edd8c051c74f9dc606e77fa087a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 4163194694925071930, guid: b54e9edd8c051c74f9dc606e77fa087a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4163194694925071930, guid: b54e9edd8c051c74f9dc606e77fa087a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4163194694925071930, guid: b54e9edd8c051c74f9dc606e77fa087a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4163194694925071930, guid: b54e9edd8c051c74f9dc606e77fa087a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4163194694925071930, guid: b54e9edd8c051c74f9dc606e77fa087a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4163194694925071930, guid: b54e9edd8c051c74f9dc606e77fa087a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4163194694925071930, guid: b54e9edd8c051c74f9dc606e77fa087a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4163194694925071930, guid: b54e9edd8c051c74f9dc606e77fa087a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b54e9edd8c051c74f9dc606e77fa087a, type: 3}
 --- !u!1001 &7390669417749478409
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15132,6 +15225,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trap_Saw_Extended
       objectReference: {fileID: 0}
+    - target: {fileID: 2642270230599803977, guid: f8552b01813fd4446ad3ac80a31cfb2e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6270002329677301954, guid: f8552b01813fd4446ad3ac80a31cfb2e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.49
@@ -15160,3 +15257,4 @@ SceneRoots:
   - {fileID: 5306225253384369212}
   - {fileID: 1945111557404118382}
   - {fileID: 3174768006166580543}
+  - {fileID: 6176211187572451550}

@@ -43,10 +43,22 @@ public class Enemy_BlueBird : Enemy
             Flip();
     }
 
+    [SerializeField] private Transform movePoint;
+    [SerializeField] private float xMultiplier;
+    [SerializeField] private float yMultiplier;
+
     public void FlyUpEvent()
     {
         if (canFly)
             rb.velocity = new Vector2(speed * facingDirection, flyForce);
+    
+        //if(canFly)
+        //{
+        //    Vector2 direction = transform.position - movePoint.position;
+        //    rb.velocity = new Vector2(-direction.x * xMultiplier, -direction.y * yMultiplier);
+        //}
+    
+    
     }
 
     protected override void CollisionChecks()
