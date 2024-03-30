@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : Trap
 {
     protected Animator anim;
     protected Rigidbody2D rb;
@@ -71,15 +71,7 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject);
     }
 
-    protected virtual void OnTriggerEnter2D(Collider2D collision) 
-    {
-        if(collision.GetComponent<Player>() != null)
-        {
-            Player player = collision.GetComponent<Player>();
 
-            player.Knockback(transform);
-        }
-    }
 
     protected virtual void Flip()
     {
@@ -91,7 +83,7 @@ public class Enemy : MonoBehaviour
     {
         groundDetected = Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, whatIsGround);
         wallDetected = Physics2D.Raycast(wallCheck.position, Vector2.right * facingDirection, wallCheckDistance, whatIsGround);
-        playerDetection = Physics2D.Raycast(wallCheck.position, Vector2.right * facingDirection, 25, ~whatToIgnore);
+        playerDetection = Physics2D.Raycast(wallCheck.position, Vector2.right * facingDirection, 100, ~whatToIgnore);
 
     }
 
