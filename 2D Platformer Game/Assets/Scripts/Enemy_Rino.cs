@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy_Rino : Enemy
 {
-    [Header("Rino spesific info")]
+    [Header("Rino specific info")]
     [SerializeField] float agroSpeed;
     [SerializeField] float shockTime;
                      float shockTimeCounter;
@@ -20,9 +20,9 @@ public class Enemy_Rino : Enemy
     void Update()
     {
         if (playerDetection.collider.GetComponent<Player>() != null)
-            aggresive = true;
+            aggressive = true;
 
-        if (!aggresive)
+        if (!aggressive)
         {
             WalkAround();
         }
@@ -40,7 +40,7 @@ public class Enemy_Rino : Enemy
             {
                 invincible = true;
                 Flip();
-                aggresive = false;
+                aggressive = false;
             }
 
             shockTimeCounter -= Time.deltaTime;

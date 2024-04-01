@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy_Ghost : Enemy
 {
-    [Header("Ghost Spesifics")]
+    [Header("Ghost Specific")]
     [SerializeField] private float activeTime;
                      private float activeTimeCounter = 4;
 
@@ -17,7 +17,7 @@ public class Enemy_Ghost : Enemy
     {
         base.Start();
         sr = GetComponent<SpriteRenderer>();
-        aggresive = true;
+        aggressive = true;
         invincible = true;
 
         player = GameObject.Find("Player").transform;
@@ -31,18 +31,18 @@ public class Enemy_Ghost : Enemy
         if(activeTimeCounter > 0)
             transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
 
-        if(activeTimeCounter < 0 && idleTimeCounter < 0 && aggresive)
+        if(activeTimeCounter < 0 && idleTimeCounter < 0 && aggressive)
         {
             anim.SetTrigger("disappear");
-            aggresive = false;
+            aggressive = false;
             idleTimeCounter = idleTime;
         }
 
-        if(activeTimeCounter < 0 && idleTimeCounter < 0 && !aggresive)
+        if(activeTimeCounter < 0 && idleTimeCounter < 0 && !aggressive)
         {
             ChoosePosition();
             anim.SetTrigger("appear");
-            aggresive = true;
+            aggressive = true;
             activeTimeCounter = activeTime;
         }
 
@@ -64,7 +64,7 @@ public class Enemy_Ghost : Enemy
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        if(aggresive)
+        if(aggressive)
             base.OnTriggerEnter2D(collision);
     }
 }

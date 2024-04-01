@@ -7,7 +7,7 @@ public class Enemy_Radish : Enemy
     private RaycastHit2D groundBelowDetected;
     private RaycastHit2D groundAboveDetected;
 
-    [Header("Radish Spesifics")]
+    [Header("Radish Specific")]
     [SerializeField] private float ceilingDistance;
     [SerializeField] private float groundDistance;
 
@@ -28,10 +28,10 @@ public class Enemy_Radish : Enemy
         if(aggroTimeCounter < 0 && !groundAboveDetected)
         {
             rb.gravityScale = 1;
-            aggresive = false;
+            aggressive = false;
         }
         
-        if(!aggresive)
+        if(!aggressive)
         {
             if(groundBelowDetected && !groundAboveDetected)
             {
@@ -47,16 +47,16 @@ public class Enemy_Radish : Enemy
         CollisionChecks();
 
         anim.SetFloat("xVelocity", rb.velocity.x);
-        anim.SetBool("aggresive", aggresive);
+        anim.SetBool("aggresive", aggressive);
     }
 
     public override void Damage()
     {
-        if(!aggresive)
+        if(!aggressive)
         {
             aggroTimeCounter = aggroTime;
             rb.gravityScale = 12;
-            aggresive = true;
+            aggressive = true;
         }
         else
             base.Damage();

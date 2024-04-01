@@ -28,7 +28,7 @@ public class Enemy : Trap
                      protected float idleTimeCounter;
 
     protected bool canMove = true;
-    protected bool aggresive;
+    protected bool aggressive;
 
     protected virtual void Start() 
     {
