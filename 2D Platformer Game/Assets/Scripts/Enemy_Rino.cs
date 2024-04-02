@@ -16,9 +16,10 @@ public class Enemy_Rino : Enemy
         invincible = true;
     }
 
-    // Update is called once per frame
     void Update()
     {
+        CollisionChecks();
+
         if (playerDetection.collider.GetComponent<Player>() != null)
             aggressive = true;
 
@@ -28,6 +29,12 @@ public class Enemy_Rino : Enemy
         }
         else
         {
+            if(!groundCheck)
+            {
+                aggressive = false;
+                Flip();
+            }
+
             rb.velocity = new Vector2(agroSpeed * facingDirection, rb.velocity.y);
 
             if (wallDetected && invincible)
@@ -45,9 +52,6 @@ public class Enemy_Rino : Enemy
 
             shockTimeCounter -= Time.deltaTime;
         }
-
-
-        CollisionChecks();
         AnimatorControllers();
     }
 

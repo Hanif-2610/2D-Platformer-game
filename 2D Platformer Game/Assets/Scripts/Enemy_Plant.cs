@@ -36,7 +36,7 @@ public class Enemy_Plant : Enemy
     private void AttackEvent()
     {
         GameObject newBullet = Instantiate(bulletPrefab, bulletOrigin.transform.position, bulletOrigin.transform.rotation);
-
         newBullet.GetComponent<Bullet>().SetupSpeed(bulletSpeed * facingDirection, 0);
+        Destroy(newBullet, 3f);
     }
 }
