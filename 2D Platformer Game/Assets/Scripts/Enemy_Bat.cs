@@ -10,7 +10,7 @@ public class Enemy_Bat : Enemy
     [SerializeField] private LayerMask whatIsPlayer;
     
     private bool playerDetected;
-    private Transform player;
+
     
     private Vector2 destination;
     private bool canBeAggressive = true;
@@ -21,7 +21,7 @@ public class Enemy_Bat : Enemy
     protected override void Start()
     {
         base.Start();
-        player = GameObject.Find("Player").transform;
+
         defaultSpeed = speed;
         destination = idlePoint[0].position;
         transform.position = idlePoint[0].position;
@@ -43,7 +43,14 @@ public class Enemy_Bat : Enemy
         {
             aggressive = true;
             canBeAggressive = false;
-            destination = player.transform.position;
+
+            if(player != null)
+                destination = player.transform.position;
+            else
+            {
+                aggressive = false;
+                canBeAggressive = true;
+            }
         }
 
         if(aggressive)
@@ -85,6 +92,9 @@ public class Enemy_Bat : Enemy
 
     private void FlipController()
     {
+        if(player == null)
+            return;
+        
         if(facingDirection == -1 && transform.position.x < destination.x)
             Flip();
         else if(facingDirection == 1 && transform.position.x > destination.x)

@@ -20,6 +20,7 @@ public class Enemy : Trap
     protected bool groundDetected;
     protected RaycastHit2D playerDetection;
 
+    protected Transform player;
     [HideInInspector] public bool invincible;
 
     [Header("Move info")]
@@ -34,6 +35,8 @@ public class Enemy : Trap
     {
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+
+        player = PlayerManager.instance.currentPlayer.transform;
 
         if(groundCheck == null)
             groundCheck = transform;
