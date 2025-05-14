@@ -224,6 +224,11 @@ public class Player : MonoBehaviour
         rb.velocity = new Vector2(rb.velocity.x, jumpForce);
     }
 
+    public void Push(float pushForce)
+    {
+        rb.velocity = new Vector2(rb.velocity.x, pushForce);
+    }
+
     private void FlipController()
     {
         if(facingRight && rb.velocity.x < -.1f)

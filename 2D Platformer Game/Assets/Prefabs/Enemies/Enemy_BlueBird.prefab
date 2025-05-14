@@ -189,7 +189,7 @@ MonoBehaviour:
     m_Bits: 64
   whatToIgnore:
     serializedVersion: 2
-    m_Bits: 257
+    m_Bits: 1793
   groundCheckDistance: 1.25
   wallCheckDistance: 1.75
   groundCheck: {fileID: 5944122319801548996}
@@ -201,6 +201,9 @@ MonoBehaviour:
   groundDistance: 5
   flyUpForce: 4.75
   flyDownForce: 2.5
+  movePoint: {fileID: 0}
+  xMultiplier: 0
+  yMultiplier: 0
 --- !u!1 &2517828655598016706
 GameObject:
   m_ObjectHideFlags: 0
