@@ -36,6 +36,7 @@ public class Player : MonoBehaviour
 
     [Header("Collision Info")]
     [SerializeField] LayerMask whatIsGround;
+    [SerializeField] LayerMask whatIsWall;
     [SerializeField] float groundCheckDistance;
     [SerializeField] float wallCheckDistance;
     [SerializeField] Transform enemyCheck;
@@ -245,7 +246,7 @@ public class Player : MonoBehaviour
     private void CollisionChecks()
     {
         isGrounded = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, whatIsGround);
-        isWallDetected = Physics2D.Raycast(transform.position, Vector2.right * facingDirection, wallCheckDistance, whatIsGround);
+        isWallDetected = Physics2D.Raycast(transform.position, Vector2.right * facingDirection, wallCheckDistance, whatIsWall);
 
         if(isWallDetected && rb.velocity.y < 0)
             canWallSlide = true;

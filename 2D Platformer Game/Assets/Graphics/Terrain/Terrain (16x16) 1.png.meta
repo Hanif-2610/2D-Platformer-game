@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -147,7 +147,70 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Terrain (16x16) 1_3
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 171
+        width: 48
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91707f05c33e33b4ca603b322a7ad183
+      internalID: -456777257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Terrain (16x16) 1_4
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 155
+        width: 48
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f34e935317f0de4781b3d776820b363
+      internalID: 810700570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Terrain (16x16) 1_5
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 139
+        width: 48
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efb28672d8e4a3e48ba8f2b7eb12f7d6
+      internalID: 1747794517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -158,7 +221,21 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Terrain (16x16) 1_0: -1195708474
+      Terrain (16x16) 1_1: -1020553108
+      Terrain (16x16) 1_10: 258005441
+      Terrain (16x16) 1_11: -1508770353
+      Terrain (16x16) 1_12: 45437570
+      Terrain (16x16) 1_13: 1594954344
+      Terrain (16x16) 1_2: -1651525128
+      Terrain (16x16) 1_3: -456777257
+      Terrain (16x16) 1_4: 810700570
+      Terrain (16x16) 1_5: 1747794517
+      Terrain (16x16) 1_6: -1465068170
+      Terrain (16x16) 1_7: 378350659
+      Terrain (16x16) 1_8: 1931088892
+      Terrain (16x16) 1_9: 599090903
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
